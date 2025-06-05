@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/sonner";
+import Navbar from "@/components/layout/Navbar";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -20,9 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ClerkProvider>
-        <body className={`${bricolage.variable} antialiased`}>{children}</body>
-      </ClerkProvider>
+      <body className={`${bricolage.variable} antialiased`}>
+        <ClerkProvider appearance={{ variables: { colorPrimary: "#fe5933" } }}>
+          <Navbar />
+          <Toaster richColors closeButton />
+          {children}
+        </ClerkProvider>
+      </body>
     </html>
   );
 }

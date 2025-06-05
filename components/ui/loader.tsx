@@ -10,10 +10,10 @@ export default function Loader({
   return (
     <>
       <div
-        className={`w-full ${className} flex-center flex-col gap-4 bg-transparent animate-pulse select-none`}
+        className={`w-full ${className} flex items-center justify-center flex-col gap-4 bg-transparent animate-pulse select-none`}
       >
         <Image
-          src="/logo.png"
+          src="/images/logo.svg"
           alt="Loading"
           width={600}
           height={600}

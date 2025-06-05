@@ -215,7 +215,7 @@ body {
 
 @layer utilities {
   .br {
-    @apply border-b-2 border-[red] border-solid;
+    @apply border-2 border-[red] border-solid;
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
