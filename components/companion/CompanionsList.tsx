@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { cn, getSubjectColor } from "@/lib/utils";
+import { Companion } from "@/types";
 
 interface CompanionsListProps {
   title: string;
@@ -35,8 +36,8 @@ const CompanionsList = ({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {companions?.map(({ id, subject, name, topic, duration }) => (
-            <TableRow key={id}>
+          {companions?.map(({ id, subject, name, topic, duration }, index) => (
+            <TableRow key={index}>
               <TableCell>
                 <Link href={`/companions/${id}`}>
                   <div className="flex items-center gap-2">

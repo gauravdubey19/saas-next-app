@@ -1,10 +1,10 @@
 "use client";
-// import { removeBookmark } from "@/lib/actions/companion.actions";
-// import { addBookmark } from "@/lib/actions/companion.actions";
-import Image from "next/image";
-import Link from "next/link";
+
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { addBookmark, removeBookmark } from "@/lib/actions/companion.actions";
+import { toast } from "sonner";
 
 interface CompanionCardProps {
   id: string;
@@ -26,16 +26,14 @@ const CompanionCard = ({
   bookmarked,
 }: CompanionCardProps) => {
   const pathname = usePathname();
-  const [wislist, setWishlist] = useState<boolean>(false);
+
   const handleBookmark = async () => {
     if (bookmarked) {
-      //   await removeBookmark(id, pathname);
-      setWishlist(!wislist);
-      console.log("remove", id, pathname);
+      await removeBookmark(id, pathname);
+      toast.success(`${name} Bookmark removed`);
     } else {
-      // await addBookmark(id, pathname);
-      setWishlist(!wislist);
-      console.log("add", id, pathname);
+      await addBookmark(id, pathname);
+      toast.success(`${name} Bookmark added`);
     }
   };
   return (
@@ -45,8 +43,7 @@ const CompanionCard = ({
         <button className="companion-bookmark" onClick={handleBookmark}>
           <Image
             src={
-              // bookmarked
-              wislist ? "/icons/bookmark-filled.svg" : "/icons/bookmark.svg"
+              bookmarked ? "/icons/bookmark-filled.svg" : "/icons/bookmark.svg"
             }
             alt="bookmark"
             width={12.5}

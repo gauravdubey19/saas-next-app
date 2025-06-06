@@ -65,7 +65,6 @@ interface Avatar {
   className?: string;
 }
 
-
 interface SavedMessage {
   role: "user" | "system" | "assistant";
   content: string;
@@ -81,3 +80,23 @@ interface CompanionComponentProps {
   voice: string;
   style: string;
 }
+
+export interface UrlQueryParams {
+  params: string;
+  key: string;
+  value: string;
+}
+export interface RemoveUrlQueryParams {
+  params: string;
+  keysToRemove: string[];
+}
+
+export declare const formUrlQuery: ({
+  params,
+  key,
+  value,
+}: UrlQueryParams) => string;
+export declare const removeKeysFromUrlQuery: ({
+  params,
+  keysToRemove,
+}: RemoveUrlQueryParams) => string;
