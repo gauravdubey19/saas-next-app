@@ -79,7 +79,7 @@ const CompanionComponent = ({
       vapi.off("speech-start", onSpeechStart);
       vapi.off("speech-end", onSpeechEnd);
     };
-  }, []);
+  }, [companionId]);
 
   const toggleMicrophone = () => {
     const isMuted = vapi.isMuted();
@@ -96,7 +96,7 @@ const CompanionComponent = ({
       serverMessages: [],
     };
 
-    // @ts-expect-error
+    // @ts-expect-error assistantOverrides is not assignable to parameter of type AssistantOverrides
     vapi.start(configureAssistant(voice, style), assistantOverrides);
   };
 
